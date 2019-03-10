@@ -11,7 +11,6 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
 
   searchForm: FormGroup;
-  submitted = false;
   baseUrl = 'https://swapi.co/api'
   _data = {};
 
@@ -24,7 +23,7 @@ export class AppComponent {
   onSubmit(dropdown, search) {
     return (this.http.get(`${this.baseUrl}/${dropdown}/?search=${search}`))
     .subscribe(data => {
-      this._data = data
+      this._data = data;
     })
   }
 

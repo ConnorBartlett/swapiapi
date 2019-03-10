@@ -1,29 +1,33 @@
 <div id='search'>
   <h1>SWAPI SEARCH</h1>
 
-  <div id='dropdown'>
+  <div>
     <select #dropdown>
       <option value='people'>People</option>
-      <option value='starShips'>Ships</option>
+      <option value='starships'>Ships</option>
       <option value='films'>Films</option>
     </select>
+  </div>
 
-    <form [formGroup]='searchForm' (ngSubmit)='onSubmit()'>
+    <form [formGroup]='searchForm'>
       <label>
         Search:
         <input type='text' formControlName='search'>
       </label>
-      <button (click)="onSubmit(dropdown.value, searchForm.search.value)">Enter</button>
+      <button (click)="onSubmit(dropdown.value, searchForm.controls.search.value)">Enter</button>
     </form>
 
     <ul *ngIf='_data.results'>
-      <li *ngFor='let data of _data.results'>
-      {{ item | json }}
+      <li *ngFor='let item of _data.results'>
+        {{item.name | json }}:
+        {{ item | json }}
+    
+
       </li>
     </ul>
   
   
-  </div>
+ 
   
 </div>
 
